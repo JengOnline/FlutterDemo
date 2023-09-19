@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:my_app/src/feature/home/presentation/all_menu_screen.dart';
-import 'package:my_app/src/feature/term_condition/presentation/term_condition_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +9,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  List<Widget> data = [const AllMenu()];
+  List<Widget> data = [
+    const AllMenu(),
+  ];
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
