@@ -7,13 +7,19 @@ class TermCondition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("TermCondition"),
+        ),
         body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        ExpansionTileWidget(title: 'Term condition 1'),
-        ExpansionTileWidget(title: 'Term condition 2'),
-        ExpansionTileWidget(title: 'Term condition 3'),
-      ],
-    ));
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const [
+            ExpansionTileWidget(
+              title: 'Term condition 1',
+              initiallyExpanded: true,
+            ),
+            ExpansionTileWidget(title: 'Term condition 2'),
+            ExpansionTileWidget(title: 'Term condition 3'),
+          ],
+        ));
   }
 }
