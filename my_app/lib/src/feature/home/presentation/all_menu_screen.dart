@@ -18,12 +18,9 @@ class AllMenuState extends State<AllMenu> {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
               onTap: () {
-                Navigator.pushAndRemoveUntil(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return const LoginScreen();
-                }), (r) {
-                  return false;
-                });
+                Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
               },
               child: const Icon(
                 Icons.logout_outlined,
