@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:my_app/src/core/store/auth_store.dart';
+import 'package:my_app/src/feature/home/presentation/home_screen.dart';
 import 'package:my_app/src/feature/login/presentation/login_screen.dart';
 
 class SplashScreent extends StatefulWidget {
@@ -15,6 +17,7 @@ class SplashScreentState extends State<SplashScreent> {
   void initState() {
     super.initState();
     startTime();
+    loadIsLogin();
   }
 
   @override
@@ -24,14 +27,22 @@ class SplashScreentState extends State<SplashScreent> {
     );
   }
 
+  bool isLogin = false;
+
   startTime() async {
     var duration = const Duration(seconds: 3);
     return Timer(duration, route);
   }
 
   route() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+    print(isLogin);
+    if (isLogin) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    } else {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()));
+    }
   }
 
   initScreen(BuildContext context) {
@@ -63,5 +74,11 @@ class SplashScreentState extends State<SplashScreent> {
         ),
       ),
     );
+  }
+
+  void loadIsLogin() async {
+    AuthStore().getIsLogin().then((value) => setState(() {
+          isLogin = value!;
+        }));
   }
 }

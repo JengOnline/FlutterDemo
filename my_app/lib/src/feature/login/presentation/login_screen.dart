@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/src/core/store/auth_store.dart';
 import 'package:my_app/src/feature/common/function/alert_dialog_function.dart';
 import 'package:my_app/src/feature/term_condition/presentation/term_condition_screen.dart';
 
@@ -94,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       AlertDialogHandle().showDialog(
           context, "Login Error", "An unexception error occurred", "OK");
+      AuthStore().setIsLogin();
     }
   }
 }
