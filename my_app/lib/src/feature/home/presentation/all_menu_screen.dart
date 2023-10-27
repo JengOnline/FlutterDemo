@@ -27,8 +27,8 @@ class AllMenuState extends State<AllMenu> {
               )),
         )
       ]),
-      body: Column(children: [
-        const MenuWidget(),
+      body: const Column(children: [
+        MenuWidget(),
       ]),
     );
   }

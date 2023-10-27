@@ -27,7 +27,7 @@ class SplashScreentState extends State<SplashScreent> {
     );
   }
 
-  bool isLogin = false;
+  String? isLogin;
 
   startTime() async {
     var duration = const Duration(seconds: 3);
@@ -35,8 +35,7 @@ class SplashScreentState extends State<SplashScreent> {
   }
 
   route() {
-    print(isLogin);
-    if (isLogin) {
+    if (isLogin == 'true') {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     } else {
@@ -77,8 +76,11 @@ class SplashScreentState extends State<SplashScreent> {
   }
 
   void loadIsLogin() async {
-    AuthStore().getIsLogin().then((value) => setState(() {
-          isLogin = value!;
+    await AuthStore().getIsLogin().then((value) => setState(() {
+          if (value != null) {
+            print('loadIsLogin:' + value);
+            isLogin = value;
+          }
         }));
   }
 }
