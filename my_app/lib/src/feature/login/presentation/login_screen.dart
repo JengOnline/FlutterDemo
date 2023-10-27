@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/src/core/data/profile_data.dart';
+import 'package:my_app/src/core/provider/profile_provider.dart';
+import 'package:my_app/src/core/service/profile_service.dart';
 import 'package:my_app/src/core/store/auth_store.dart';
 import 'package:my_app/src/feature/common/function/alert_dialog_function.dart';
 import 'package:my_app/src/feature/term_condition/presentation/term_condition_screen.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -89,13 +93,16 @@ class _LoginScreenState extends State<LoginScreen> {
   handleValidateLogin(BuildContext context) {
     if (usernameController.text == "Sophon" &&
         passwordController.text == "Ju") {
+      //for test write file (token)
+      AuthStore().setIsLogin();
+
+      //navigate
       Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => const TermCondition(),
       ));
     } else {
       AlertDialogHandle().showDialog(
           context, "Login Error", "An unexception error occurred", "OK");
-      AuthStore().setIsLogin();
     }
   }
 }

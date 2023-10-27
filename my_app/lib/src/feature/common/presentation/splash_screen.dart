@@ -78,7 +78,6 @@ class SplashScreentState extends State<SplashScreent> {
   void loadIsLogin() async {
     await AuthStore().getIsLogin().then((value) => setState(() {
           if (value != null) {
-            print('loadIsLogin:' + value);
             isLogin = value;
           }
         }));

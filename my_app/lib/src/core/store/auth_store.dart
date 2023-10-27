@@ -8,7 +8,7 @@ class AuthStore {
   Future<void> setIsLogin() async {
     SharedPreferences.setMockInitialValues({});
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(isLogin, "true");
+    prefs.setString(isLogin, "token1");
   }
 
   Future<String?> getIsLogin() async {

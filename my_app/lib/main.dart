@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/feature/common/presentation/splash_screen.dart';
+import 'package:my_app/src/core/provider/profile_provider.dart';
+import 'package:my_app/src/feature/login/presentation/login_screen.dart';
+import 'package:my_app/src/feature/term_condition/presentation/term_condition_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<ProfileProvider>(create: (_) => ProfileProvider())
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(primaryColor: Colors.blue),
-        home: const SplashScreent());
+      title: 'Flutter Demo',
+      theme: ThemeData(primaryColor: Colors.blue),
+      home: const LoginScreen(),
+    );
   }
 }
 
